@@ -1,28 +1,35 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const Navbar = () => {
   return (
     <Wrapper>
-      <h2>
-        <span style={{ color: "red" }}>C</span>
-        <span style={{ color: "#125D98" }}>o</span>
-        <span style={{ color: "#FCDA05" }}>c</span>
-        <span style={{ color: "#379237" }}>t</span>
-        <span style={{ color: "#F5EDCE" }}>a</span>
-        <span style={{ color: "#277BC0" }}>i</span>
-        <span style={{ color: "#674188" }}>l</span>
-        <span className="line" style={{ color: "white" }}>
-          -
-        </span>
-        <span style={{ color: "#1F8A70" }}>B</span>
-        <span style={{ color: "#ECECEC" }}>a</span>
-        <span style={{ color: "#FF0032" }}>r</span>
-        <span>🍸🍹</span>
-      </h2>
+      <Link to="/">
+        <h2>
+          <span style={{ color: "red" }}>C</span>
+          <span style={{ color: "#125D98" }}>o</span>
+          <span style={{ color: "#FCDA05" }}>c</span>
+          <span style={{ color: "#379237" }}>t</span>
+          <span style={{ color: "#F5EDCE" }}>a</span>
+          <span style={{ color: "#277BC0" }}>i</span>
+          <span style={{ color: "#674188" }}>l</span>
+          <span className="line" style={{ color: "white" }}>
+            -
+          </span>
+          <span style={{ color: "#1F8A70" }}>B</span>
+          <span style={{ color: "#ECECEC" }}>a</span>
+          <span style={{ color: "#FF0032" }}>r</span>
+          <span>🍸🍹</span>
+        </h2>
+      </Link>
       <ul>
-        <li className="home-title">Home</li>
-        <li>About</li>
+        <Link to="/" className="link-item">
+          Home
+        </Link>
+        <Link to="/about" className="link-item">
+          About
+        </Link>
       </ul>
     </Wrapper>
   );
@@ -43,20 +50,23 @@ const Wrapper = styled.section`
     padding: 6px;
   }
 
+  a {
+    text-decoration: none;
+  }
+
   ul {
     padding-left: 0;
     display: flex;
     justify-content: space-around;
     width: 300px;
-    color: white;
   }
 
-  ul li {
+  ul .link-item {
     transition: 0.4s ease-out;
     cursor: pointer;
   }
 
-  ul li:hover {
+  ul .link-item:hover {
     text-decoration: underline #38e54d 2px;
     text-underline-offset: 7px;
   }
@@ -66,11 +76,11 @@ const Wrapper = styled.section`
       flex-direction: column;
     }
 
-    ul li {
+    ul .link-item {
       align-self: center;
     }
 
-    ul li:first-child {
+    ul .link-item:first-child {
       margin-bottom: 13px;
     }
 
