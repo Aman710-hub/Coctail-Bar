@@ -5,32 +5,34 @@ import styled from "styled-components";
 const Navbar = () => {
   return (
     <Wrapper>
-      <Link to="/">
-        <h2>
-          <span style={{ color: "red" }}>C</span>
-          <span style={{ color: "#125D98" }}>o</span>
-          <span style={{ color: "#FCDA05" }}>c</span>
-          <span style={{ color: "#379237" }}>t</span>
-          <span style={{ color: "#F5EDCE" }}>a</span>
-          <span style={{ color: "#277BC0" }}>i</span>
-          <span style={{ color: "#674188" }}>l</span>
-          <span className="line" style={{ color: "white" }}>
-            -
-          </span>
-          <span style={{ color: "#1F8A70" }}>B</span>
-          <span style={{ color: "#ECECEC" }}>a</span>
-          <span style={{ color: "#FF0032" }}>r</span>
-          <span>🍸🍹</span>
-        </h2>
-      </Link>
-      <ul>
-        <Link to="/" className="link-item">
-          Home
+      <div className="nav-container">
+        <Link to="/">
+          <h2>
+            <span style={{ color: "red" }}>C</span>
+            <span style={{ color: "#125D98" }}>o</span>
+            <span style={{ color: "#FCDA05" }}>c</span>
+            <span style={{ color: "#379237" }}>t</span>
+            <span style={{ color: "#F5EDCE" }}>a</span>
+            <span style={{ color: "#277BC0" }}>i</span>
+            <span style={{ color: "#674188" }}>l</span>
+            <span className="line" style={{ color: "white" }}>
+              -
+            </span>
+            <span style={{ color: "#1F8A70" }}>B</span>
+            <span style={{ color: "#ECECEC" }}>a</span>
+            <span style={{ color: "#FF0032" }}>r</span>
+            <span>🍸🍹</span>
+          </h2>
         </Link>
-        <Link to="/about" className="link-item">
-          About
-        </Link>
-      </ul>
+        <ul>
+          <Link to="/" className="link-item">
+            Home
+          </Link>
+          <Link to="/about" className="link-item">
+            About
+          </Link>
+        </ul>
+      </div>
     </Wrapper>
   );
 };
@@ -39,12 +41,16 @@ export default Navbar;
 
 const Wrapper = styled.section`
   width: 100%;
-  /* max-width: 80vw; */
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
   background-color: #283149;
+  /* max-width: 80vw; */
 
+  .nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 80vw;
+    margin-inline: auto;
+  }
   h2 {
     cursor: pointer;
     padding: 6px;
