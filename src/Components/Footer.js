@@ -39,10 +39,7 @@ const Footer = () => {
 export default Footer;
 
 const Wrapper = styled.footer`
-  position: absolute;
-  bottom: 0;
   width: 100%;
-  margin-top: 500px;
   height: 150px;
   background-color: #283149;
   display: flex;

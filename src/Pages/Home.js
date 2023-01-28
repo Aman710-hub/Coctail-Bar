@@ -1,37 +1,24 @@
 import React, { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
+import CoctailsList from "../Components/CoctailsList";
 import SearchForm from "../Components/SearchForm";
 import { useGlobalContext } from "../Context/context";
 
 const Home = () => {
   const [term, setTerm] = useState("");
-  const [data, setData] = useState([]);
 
-  const value = useGlobalContext();
+  const { fetchData, data, loading } = useGlobalContext();
+  console.log("🚀 ~ Home ~ data", data);
 
-  // const value = useGlobalContext();
-  // console.log("🚀 ~ Home ~ value", value);
+  useEffect(() => {
+    console.log("use Efffffffffffff");
+    fetchData();
+  }, []);
 
-  // const fetchData = async () => {
-  //   try {
-  //     const resp = await fetch(
-  //       "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=a"
-  //     );
-  //     const data = await resp.json();
-  //     console.log(data);
-  //   } catch (err) {
-  //     console.error(err);
-  //   }
-  // };
+  if (loading) {
+    return <h1>Loading</h1>;
+  }
 
-  // const fetchData = () => {
-  //   fetch("https://www.thecocktaildb.com/api/json/v1/1/search.php?s=a")
-  //     .then((resp) => resp.json())
-  //     .then((data) => console.log(data, "i have data from server"));
-  // };
-  // useEffect(() => {
-  //   fetchData();
-  // }, []);
   return (
     <Wrapper className="container">
       {console.log("render")}
@@ -48,6 +35,7 @@ const Home = () => {
           </select>
         </div>
       </div>
+      <CoctailsList data={data} />
     </Wrapper>
   );
 };

@@ -6,6 +6,7 @@
   width: 100%;
   margin-inline: auto;
   max-width: 80vw;
+  min-height: 100%;
 
   /* background-color: red; */
 }
