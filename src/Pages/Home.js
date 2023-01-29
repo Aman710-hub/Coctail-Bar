@@ -6,9 +6,7 @@ import { useGlobalContext } from "../Context/context";
 
 const Home = () => {
   const [term, setTerm] = useState("");
-
   const { fetchData, data, loading } = useGlobalContext();
-  console.log("🚀 ~ Home ~ data", data);
 
   useEffect(() => {
     console.log("use Efffffffffffff");

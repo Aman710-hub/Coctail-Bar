@@ -5,7 +5,7 @@ const CoctailsList = ({ data }) => {
   return (
     <Wrapper>
       {data?.map((coctail) => {
-        return <SingleCoctail coctail={{ ...coctail }} />;
+        return <SingleCoctail key={coctail.idDrink} coctail={{ ...coctail }} />;
       })}
     </Wrapper>
   );

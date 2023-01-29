@@ -1,4 +1,5 @@
 import React from "react";
+import { Link, useParams } from "react-router-dom";
 import styled from "styled-components";
 
 const SingleCoctail = ({ coctail }) => {
@@ -20,7 +21,9 @@ const SingleCoctail = ({ coctail }) => {
           {" "}
           <span className="text_decoration"> {coctail.strAlcoholic}</span>
         </p>
-        <button className="ditail_btn">Ditails</button>
+        <Link to={`/${coctail.idDrink}`} className="ditail_btn">
+          Ditails
+        </Link>
       </div>
     </Wrapper>
   );
@@ -56,5 +59,7 @@ const Wrapper = styled.section`
     border-radius: 5px;
     background-color: #041c32;
     color: white;
+    text-align: center;
+    margin-bottom: 5px;
   }
 `;
