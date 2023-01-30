@@ -1,28 +1,15 @@
-import React, { useContext, useEffect, useState } from "react";
+import React from "react";
 import styled from "styled-components";
 import CoctailsList from "../Components/CoctailsList";
 import SearchForm from "../Components/SearchForm";
-import { useGlobalContext } from "../Context/context";
 
 const Home = () => {
-  const [term, setTerm] = useState("");
-  const { fetchData, data, loading } = useGlobalContext();
-
-  useEffect(() => {
-    console.log("use Efffffffffffff");
-    fetchData();
-  }, []);
-
-  if (loading) {
-    return <h1>Loading</h1>;
-  }
-
   return (
     <Wrapper className="container">
       {console.log("render")}
       <div className="filter-container">
         <h3>Search coctails</h3>
-        <SearchForm term={term} setTerm={setTerm} />
+        <SearchForm />
 
         <div className="dropdown-select">
           <p className="sort-lable">Sort by alcohol:</p>
@@ -33,7 +20,7 @@ const Home = () => {
           </select>
         </div>
       </div>
-      <CoctailsList data={data} />
+      <CoctailsList />
     </Wrapper>
   );
 };

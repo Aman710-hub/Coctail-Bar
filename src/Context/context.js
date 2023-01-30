@@ -1,22 +1,24 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 
 // created context
 const AppContext = createContext();
 
 // base url
-const url = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=v";
+const url = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=";
 
 // provider component
 const AppProvider = ({ children }) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [SingleCoctail, setSingleCoctail] = useState([]);
+  const [term, setTerm] = useState("");
 
   // fuction for data fetching all coctails
-  const fetchData = async () => {
+  const fetchData = async (term1) => {
+    term1 ? (term1 = term1) : (term1 = "v");
     setLoading(true);
     try {
-      const resp = await fetch(url);
+      const resp = await fetch(`${url}${term1}`);
       const data = await resp.json();
       setData(data.drinks);
       setLoading(false);
@@ -40,9 +42,18 @@ const AppProvider = ({ children }) => {
       setLoading(false);
     }
   };
+
   return (
     <AppContext.Provider
-      value={{ fetchData, data, loading, SingleCoctail, fetchSingleCoctail }}
+      value={{
+        fetchData,
+        data,
+        loading,
+        SingleCoctail,
+        fetchSingleCoctail,
+        term,
+        setTerm,
+      }}
     >
       {children}
     </AppContext.Provider>

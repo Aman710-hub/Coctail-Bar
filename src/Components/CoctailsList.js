@@ -1,7 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import SingleCoctail from "./SingleCoctail";
 import styled from "styled-components";
-const CoctailsList = ({ data }) => {
+import { useGlobalContext } from "../Context/context";
+
+const CoctailsList = () => {
+  const { loading, term, fetchData, data } = useGlobalContext();
+
+  useEffect(() => {
+    fetchData(term);
+  }, [term]);
+  const fil = data.filter((item) => {
+    return item.strAlcoholic === "Alcoholic";
+  });
+  console.log("🚀 ~ fil ~ fil", fil);
+  if (loading) {
+    return <h1>Loading...</h1>;
+  }
   return (
     <Wrapper>
       {data?.map((coctail) => {
