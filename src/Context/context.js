@@ -9,6 +9,7 @@ const url = "https://www.thecocktaildb.com/api/json/v1/1/search.php?s=";
 // provider component
 const AppProvider = ({ children }) => {
   const [data, setData] = useState([]);
+  const [filteredData, setFilteredData] = useState(data);
   const [loading, setLoading] = useState(true);
   const [SingleCoctail, setSingleCoctail] = useState([]);
   const [term, setTerm] = useState("");
@@ -21,6 +22,7 @@ const AppProvider = ({ children }) => {
       const resp = await fetch(`${url}${term1}`);
       const data = await resp.json();
       setData(data.drinks);
+      setFilteredData(data.drinks);
       setLoading(false);
     } catch (err) {
       setLoading(false);
@@ -43,16 +45,32 @@ const AppProvider = ({ children }) => {
     }
   };
 
+  // filter function
+  const onFilterChange = (filterValue) => {
+    if (filterValue === "All") {
+      setFilteredData(data);
+      return;
+    }
+    const filterData = data.filter((item) => {
+      return item.strAlcoholic === filterValue
+        ? item.strAlcoholic === filterValue
+        : item.strAlcoholic === filterValue;
+    });
+    setFilteredData(filterData);
+  };
+
   return (
     <AppContext.Provider
       value={{
         fetchData,
         data,
+        filteredData,
         loading,
         SingleCoctail,
         fetchSingleCoctail,
         term,
         setTerm,
+        onFilterChange,
       }}
     >
       {children}

@@ -4,21 +4,22 @@ import styled from "styled-components";
 import { useGlobalContext } from "../Context/context";
 
 const CoctailsList = () => {
-  const { loading, term, fetchData, data } = useGlobalContext();
+  const { loading, term, fetchData, filteredData } = useGlobalContext();
 
   useEffect(() => {
     fetchData(term);
   }, [term]);
-  const fil = data.filter((item) => {
-    return item.strAlcoholic === "Alcoholic";
-  });
-  console.log("🚀 ~ fil ~ fil", fil);
+
   if (loading) {
     return <h1>Loading...</h1>;
   }
+
+  if (filteredData.length < 1) {
+    return <h1>Not found</h1>;
+  }
   return (
     <Wrapper>
-      {data?.map((coctail) => {
+      {filteredData?.map((coctail) => {
         return <SingleCoctail key={coctail.idDrink} coctail={{ ...coctail }} />;
       })}
     </Wrapper>

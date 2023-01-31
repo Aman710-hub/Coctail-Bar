@@ -2,8 +2,11 @@ import React from "react";
 import styled from "styled-components";
 import CoctailsList from "../Components/CoctailsList";
 import SearchForm from "../Components/SearchForm";
+import { useGlobalContext } from "../Context/context";
 
 const Home = () => {
+  const { onFilterChange } = useGlobalContext();
+
   return (
     <Wrapper className="container">
       {console.log("render")}
@@ -13,10 +16,10 @@ const Home = () => {
 
         <div className="dropdown-select">
           <p className="sort-lable">Sort by alcohol:</p>
-          <select name="hikkk" id="">
-            <option value="">All</option>
-            <option value="">Alcohol</option>
-            <option value="">Non Alcohol</option>
+          <select id="" onChange={(e) => onFilterChange(e.target.value)}>
+            <option>All</option>
+            <option>Alcoholic</option>
+            <option>Non alcoholic</option>
           </select>
         </div>
       </div>
