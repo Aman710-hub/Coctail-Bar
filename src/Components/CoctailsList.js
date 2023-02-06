@@ -14,7 +14,7 @@ const CoctailsList = () => {
     return <h1>Loading...</h1>;
   }
 
-  if (filteredData.length < 1) {
+  if (filteredData?.length < 1) {
     return <h1>Not found</h1>;
   }
   return (

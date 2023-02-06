@@ -13,16 +13,18 @@ const AppProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [SingleCoctail, setSingleCoctail] = useState([]);
   const [term, setTerm] = useState("");
+  const [uniqueCategories, setUniqueCategories] = useState([]);
+  const [filters, setFilters] = useState({ category: "", alcohol: "" });
 
-  // fuction for data fetching all coctails
-  const fetchData = async (term1) => {
-    term1 ? (term1 = term1) : (term1 = "v");
+  // fuction for data fetching
+  const fetchData = async (term) => {
+    term ? (term = term) : (term = "x");
     setLoading(true);
     try {
-      const resp = await fetch(`${url}${term1}`);
+      const resp = await fetch(`${url}${term}`);
       const data = await resp.json();
-      setData(data.drinks);
-      setFilteredData(data.drinks);
+      setData(data.drinks || []);
+      setFilteredData(data.drinks || []);
       setLoading(false);
     } catch (err) {
       setLoading(false);
@@ -30,6 +32,7 @@ const AppProvider = ({ children }) => {
     }
   };
 
+  // fetch single coctail
   const fetchSingleCoctail = async (id) => {
     setLoading(true);
     try {
@@ -45,18 +48,32 @@ const AppProvider = ({ children }) => {
     }
   };
 
-  // filter function
-  const onFilterChange = (filterValue) => {
-    if (filterValue === "All") {
+  const onFilterChange = (event) => {
+    const { name, value } = event.target;
+    setFilters({ ...filters, [name]: value });
+
+    // copy original data to filter
+    let temp = [...data];
+    if (value === "All" || filteredData.length < 1) {
       setFilteredData(data);
       return;
     }
-    const filterData = data.filter((item) => {
-      return item.strAlcoholic === filterValue
-        ? item.strAlcoholic === filterValue
-        : item.strAlcoholic === filterValue;
+    temp = temp.filter((item) => {
+      if (name === "alcohol") return item.strAlcoholic === value;
+      if (name === "category") return item.strCategory === value;
+      return null;
     });
-    setFilteredData(filterData);
+
+    setFilteredData(temp);
+  };
+
+  //function to get unique categories
+  const getUniqueCategories = () => {
+    const allCategories = data?.map((coctail) => {
+      return coctail.strCategory;
+    });
+    const uniqueCategories = new Set(allCategories);
+    return [...uniqueCategories];
   };
 
   return (
@@ -71,6 +88,12 @@ const AppProvider = ({ children }) => {
         term,
         setTerm,
         onFilterChange,
+        getUniqueCategories,
+        setFilteredData,
+        filters,
+        setFilters,
+        uniqueCategories,
+        setUniqueCategories,
       }}
     >
       {children}
