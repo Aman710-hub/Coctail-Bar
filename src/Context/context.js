@@ -14,7 +14,7 @@ const AppProvider = ({ children }) => {
   const [SingleCoctail, setSingleCoctail] = useState([]);
   const [term, setTerm] = useState("");
   const [uniqueCategories, setUniqueCategories] = useState([]);
-  const [filters, setFilters] = useState({ category: "", alcohol: "" });
+  const [filters, setFilters] = useState({ category: "All", alcohol: "All" });
 
   // fuction for data fetching
   const fetchData = async (term) => {
@@ -48,22 +48,26 @@ const AppProvider = ({ children }) => {
     }
   };
 
+  // undading filters state
   const onFilterChange = (event) => {
     const { name, value } = event.target;
     setFilters({ ...filters, [name]: value });
+  };
 
-    // copy original data to filter
+  // filter coctails
+  const filterCoctails = () => {
     let temp = [...data];
-    if (value === "All" || filteredData.length < 1) {
-      setFilteredData(data);
-      return;
-    }
-    temp = temp.filter((item) => {
-      if (name === "alcohol") return item.strAlcoholic === value;
-      if (name === "category") return item.strCategory === value;
-      return null;
-    });
 
+    if (filters.category !== "All") {
+      temp = temp.filter((item) => {
+        return item.strCategory === filters.category;
+      });
+    }
+    if (filters.alcohol !== "All") {
+      temp = temp.filter((item) => {
+        return item.strAlcoholic === filters.alcohol;
+      });
+    }
     setFilteredData(temp);
   };
 
@@ -75,6 +79,11 @@ const AppProvider = ({ children }) => {
     const uniqueCategories = new Set(allCategories);
     return [...uniqueCategories];
   };
+
+  // call filter function every time filters changes
+  useEffect(() => {
+    filterCoctails();
+  }, [filters]);
 
   return (
     <AppContext.Provider

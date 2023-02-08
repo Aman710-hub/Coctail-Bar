@@ -54,7 +54,7 @@ const Home = () => {
               onChange={onFilterChange}
             >
               <option>All</option>
-              {uniqueCategories.map((category, index) => {
+              {uniqueCategories?.map((category, index) => {
                 return <option key={index}> {category}</option>;
               })}
             </select>
