@@ -31,6 +31,8 @@ const Wrapper = styled.section`
   text-align: center;
   max-width: 700px;
   line-height: 1.9rem;
+  margin-top: 50px;
+  padding-inline: 20px;
   h2 {
     width: max-content;
     margin-inline: auto;

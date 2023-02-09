@@ -46,6 +46,7 @@ const Wrapper = styled.footer`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-top: 50px;
 
   h2 {
     cursor: pointer;
