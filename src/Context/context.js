@@ -85,6 +85,13 @@ const AppProvider = ({ children }) => {
     filterCoctails();
   }, [filters]);
 
+  useEffect(() => {
+    setUniqueCategories(getUniqueCategories());
+  }, [term, filteredData, data]);
+
+  useEffect(() => {
+    setFilters({ category: "All", alcohol: "All" });
+  }, [term]);
   return (
     <AppContext.Provider
       value={{

@@ -5,24 +5,7 @@ import SearchForm from "../Components/SearchForm";
 import { useGlobalContext } from "../Context/context";
 
 const Home = () => {
-  const {
-    onFilterChange,
-    getUniqueCategories,
-    filters,
-    setFilters,
-    filteredData,
-    uniqueCategories,
-    setUniqueCategories,
-    term,
-    data,
-  } = useGlobalContext();
-  useEffect(() => {
-    setUniqueCategories(getUniqueCategories());
-  }, [term, filteredData, data]);
-
-  useEffect(() => {
-    setFilters({ category: "All", alcohol: "All" });
-  }, [term]);
+  const { onFilterChange, filters, uniqueCategories } = useGlobalContext();
 
   return (
     <Wrapper className="container">
