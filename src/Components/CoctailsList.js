@@ -16,7 +16,11 @@ const CoctailsList = () => {
   }
 
   if (filteredData?.length < 1) {
-    return <h1>Not found</h1>;
+    return (
+      <Wrapper>
+        <h1 className="not_found">Not found</h1>
+      </Wrapper>
+    );
   }
   return (
     <Wrapper>
@@ -34,4 +38,9 @@ const Wrapper = styled.section`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 2rem;
+
+  .not_found {
+    font-size: 2rem;
+    text-align: center;
+  }
 `;

@@ -6,22 +6,7 @@ const Footer = () => {
   return (
     <Wrapper>
       <Link to="/">
-        <h2>
-          <span style={{ color: "red" }}>C</span>
-          <span style={{ color: "#125D98" }}>o</span>
-          <span style={{ color: "#FCDA05" }}>c</span>
-          <span style={{ color: "#379237" }}>t</span>
-          <span style={{ color: "#F5EDCE" }}>a</span>
-          <span style={{ color: "#277BC0" }}>i</span>
-          <span style={{ color: "#674188" }}>l</span>
-          <span className="line" style={{ color: "white" }}>
-            -
-          </span>
-          <span style={{ color: "#1F8A70" }}>B</span>
-          <span style={{ color: "#ECECEC" }}>a</span>
-          <span style={{ color: "#FF0032" }}>r</span>
-          <span>🍸🍹</span>
-        </h2>
+        <h2>Coctail Bar🍸</h2>
       </Link>
 
       <ul>
@@ -40,7 +25,7 @@ export default Footer;
 
 const Wrapper = styled.footer`
   width: 100%;
-  height: 150px;
+  height: 103px;
   background-color: #283149;
   display: flex;
   flex-direction: column;
@@ -50,16 +35,25 @@ const Wrapper = styled.footer`
 
   h2 {
     cursor: pointer;
+    margin-top: 20px;
+    color: #ffb100;
+    border-radius: 4px;
+    padding-inline: 10px;
+
+    /*  */
+    background: -webkit-linear-gradient(#ffea20, #0f6292);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 
   ul {
-    margin-top: 30px;
-    width: 200px;
+    margin-top: 20px;
+    width: 150px;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
   }
 
-  ul .link-item {
+  ul .link-iem {
     color: white;
     transition: 0.4s ease-out;
     cursor: pointer;

@@ -7,22 +7,7 @@ const Navbar = () => {
     <Wrapper>
       <div className="nav-container">
         <Link to="/">
-          <h2>
-            <span style={{ color: "red" }}>C</span>
-            <span style={{ color: "#125D98" }}>o</span>
-            <span style={{ color: "#FCDA05" }}>c</span>
-            <span style={{ color: "#379237" }}>t</span>
-            <span style={{ color: "#F5EDCE" }}>a</span>
-            <span style={{ color: "#277BC0" }}>i</span>
-            <span style={{ color: "#674188" }}>l</span>
-            <span className="line" style={{ color: "white" }}>
-              -
-            </span>
-            <span style={{ color: "#1F8A70" }}>B</span>
-            <span style={{ color: "#ECECEC" }}>a</span>
-            <span style={{ color: "#FF0032" }}>r</span>
-            <span>🍸🍹</span>
-          </h2>
+          <h2>Coctail Bar🍸</h2>
         </Link>
         <ul>
           <Link to="/" className="link-item">
@@ -54,6 +39,11 @@ const Wrapper = styled.section`
   h2 {
     cursor: pointer;
     padding: 6px;
+    padding-inline: 10px;
+
+    background: -webkit-linear-gradient(#ffea20, #0f6292);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 
   a {

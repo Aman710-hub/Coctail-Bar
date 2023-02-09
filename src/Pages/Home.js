@@ -76,12 +76,17 @@ const Wrapper = styled.section`
     max-width: 500px;
     margin-inline: auto;
     min-height: 150px;
-    background-color: #b3ffae;
+    background-color: #1a2031;
+    /* background-color: #283149; */
     border-radius: 7px;
     display: flex;
     align-items: center;
     flex-direction: column;
     padding-bottom: 10px;
+    color: white;
+
+    box-shadow: 0 0 16px gray;
+    box-shadow: 0 0 16px gray;
   }
 
   .filters-container h3 {
