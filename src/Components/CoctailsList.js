@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import SingleCoctail from "./SingleCoctail";
 import styled from "styled-components";
 import { useGlobalContext } from "../Context/context";
+import Loader from "./Loader";
 
 const CoctailsList = () => {
   const { loading, term, fetchData, filteredData } = useGlobalContext();
@@ -11,7 +12,7 @@ const CoctailsList = () => {
   }, [term]);
 
   if (loading) {
-    return <h1>Loading...</h1>;
+    return <Loader />;
   }
 
   if (filteredData?.length < 1) {

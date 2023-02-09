@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 import { useGlobalContext } from "../Context/context";
+import Loader from "./Loader";
 
 const CoctailDitails = () => {
   const { id } = useParams();
@@ -12,7 +13,11 @@ const CoctailDitails = () => {
   }, []);
 
   if (loading) {
-    return <h2>loading...</h2>;
+    return (
+      <div className="container">
+        <Loader />
+      </div>
+    );
   }
   return (
     <Wrapper className="container">
@@ -76,8 +81,8 @@ const CoctailDitails = () => {
               </h4>
               <h4>
                 <span className="text_decoration">Ingredients:</span>
-                {ings?.map((i) => {
-                  return i ? <span> {i},</span> : null;
+                {ings?.map((i, index) => {
+                  return i ? <span key={index}> {i},</span> : null;
                 })}
               </h4>
               <h4>
